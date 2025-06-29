@@ -1,0 +1,24 @@
+name: Simple CI Pipeline
+
+on:
+  push:
+    branches: [ main, gestion_user ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: List files
+      run: dir
+      
+    - name: Check batch files
+      run: |
+        if exist KafkaStart.bat echo ✅ KafkaStart.bat found
+        if exist KafkaStop.bat echo ✅ KafkaStop.bat found  
+        if exist KafkaStatus.bat echo ✅ KafkaStatus.bat found
+        if exist README.md echo ✅ README.md found

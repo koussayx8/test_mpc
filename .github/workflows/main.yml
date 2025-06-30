@@ -15,18 +15,21 @@ jobs:
       
     - name: Validate Scripts
       run: |
-        echo "🔍 Checking Kafka scripts..."
-        if (Test-Path "KafkaStart.bat") { 
-          echo "✅ KafkaStart.bat found" 
-        } else { 
-          echo "❌ KafkaStart.bat missing"
-          exit 1 
+        Write-Output "🔍 Checking Kafka scripts..."
+        
+        if (Test-Path "KafkaStart.bat") {
+            Write-Output "✅ KafkaStart.bat found"
+        } else {
+            Write-Output "❌ KafkaStart.bat missing"
+            exit 1
         }
-        if (Test-Path "README.md") { 
-          echo "✅ README.md found" 
-        } else { 
-          echo "❌ README.md missing"
-          exit 1 
+        
+        if (Test-Path "README.md") {
+            Write-Output "✅ README.md found"
+        } else {
+            Write-Output "❌ README.md missing"
+            exit 1
         }
-        echo "🎉 All checks passed!"
+        
+        Write-Output "🎉 All checks passed!"
       shell: powershell
